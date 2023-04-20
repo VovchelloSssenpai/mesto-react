@@ -3,7 +3,7 @@ import Header from './Header.js'
 import Main from './Main.js'
 import Footer from './Footer.js'
 import PopupWithForm from './PopupWithForm.js';
-import PopupWithImage from './ImagePopup';
+import ImagePopup from './ImagePopup';
 import { useState } from 'react';
 
 
@@ -83,7 +83,7 @@ const closeAllPopups = function(){
 
       <PopupWithForm title="Вы уверены?" text="Удалить" name="delete" onClose={closeAllPopups}>
       </PopupWithForm>
-      <PopupWithImage card={selectedCard} onClose={closeAllPopups} isOpen={isImagePopupOpen} ></PopupWithImage>
+      <ImagePopup card={selectedCard} onClose={closeAllPopups} isOpen={isImagePopupOpen} ></ImagePopup>
       </div>
       </div>
     </div>
