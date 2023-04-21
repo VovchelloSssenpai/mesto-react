@@ -8,28 +8,25 @@
     this.imageUrl = `${this.Url}/cards`;
   }
 
+_checkResponse(res){
+  if (res.ok) {
+    return res.json();
+  }
+  return Promise.reject(`Что-то пошло не так: ${res.status}`);
+}
+
   getInitialProfileData() {
     return fetch(this.profileURL, {
       method: "GET",
       headers: this.headers,
-    }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject(`Что-то пошло не так: ${res.status}`);
-    });
+    }).then(this._checkResponse);
   }
 
   getInitialImages() {
     return fetch(this.imageUrl, {
       method: "GET",
       headers: this.headers,
-    }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject(`Что-то пошло не так: ${res.status}`);
-    });
+    }).then(this._checkResponse);
   }
 
   sendProfileData({ name, profession }) {
@@ -40,12 +37,7 @@
         name: name,
         about: profession,
       }),
-    }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject(`Что-то пошло не так: ${res.status}`);
-    });
+    }).then(this._checkResponse);
   }
 
   addNewImage({ name, link }) {
@@ -56,48 +48,28 @@
         name: name,
         link: link,
       }),
-    }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject(`Что-то пошло не так: ${res.status}`);
-    });
+    }).then(this._checkResponse);
   }
 
   deleteImage(cardID) {
     return fetch(`${this.imageUrl}/${cardID}`, {
       method: "DELETE",
       headers: this.headers,
-    }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject(`Что-то пошло не так: ${res.status}`);
-    });
+    }).then(this._checkResponse);
   }
 
   placeLike(cardID) {
     return fetch(`${this.imageUrl}/${cardID}/likes`, {
       method: "PUT",
       headers: this.headers,
-    }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject(`Что-то пошло не так: ${res.status}`);
-    });
+    }).then(this._checkResponse);
   }
 
   removeLike(cardID) {
     return fetch(`${this.imageUrl}/${cardID}/likes`, {
       method: "DELETE",
       headers: this.headers,
-    }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject(`Что-то пошло не так: ${res.status}`);
-    });
+    }).then(this._checkResponse);
   }
 
   updateAvatar({ link }) {
@@ -107,12 +79,7 @@
       body: JSON.stringify({
         avatar: link,
       }),
-    }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject(`Что-то пошло не так: ${res.status}`);
-    });
+    }).then(this._checkResponse);
   }
 }
 

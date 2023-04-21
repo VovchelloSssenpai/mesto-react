@@ -24,7 +24,7 @@ function Main(props){
 useEffect(()=>{
     api.getInitialImages().then(data => {
         setCard(data);
-    })
+    }).catch(error => console.error(error));
 }, [])
 
     return (  <main className="main">
