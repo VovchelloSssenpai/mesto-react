@@ -29,13 +29,13 @@ _checkResponse(res){
     }).then(this._checkResponse);
   }
 
-  sendProfileData({ name, profession }) {
+  setUserInfo({ name, about }) {
     return fetch(this.profileURL, {
       method: "PATCH",
       headers: this.headers,
       body: JSON.stringify({
         name: name,
-        about: profession,
+        about: about,
       }),
     }).then(this._checkResponse);
   }
@@ -72,7 +72,7 @@ _checkResponse(res){
     }).then(this._checkResponse);
   }
 
-  updateAvatar({ link }) {
+  updateAvatar(link) {
     return fetch(`${this.profileURL}/avatar`, {
       method: "PATCH",
       headers: this.headers,
@@ -81,6 +81,11 @@ _checkResponse(res){
       }),
     }).then(this._checkResponse);
   }
+
+ changeLikeCardStatus(cardId, isLiked){
+  if(isLiked){return this.placeLike(cardId)} else{ return this.removeLike(cardId)}
+ }
+
 }
 
 const api = new Api({ baseUrl: "https://mesto.nomoreparties.co/v1/cohort-62",
