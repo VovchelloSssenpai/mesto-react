@@ -108,7 +108,12 @@ const closeAllPopups = function(){
       <CurrentUserContext.Provider value={currentUser} >
       <CardContext.Provider value={card}>
       <Header />
-      <Main onEditAvatar={handleAvatarEditClick} onEditProfile={handleProfileEditClick} onAddPlace={handleCardAddClick} onCardClick={handleCardClick} onCardLike={handleCardLike} onDeleteClick={handleCardDelete}  />
+      <Main onEditAvatar={handleAvatarEditClick} 
+            onEditProfile={handleProfileEditClick} 
+            onAddPlace={handleCardAddClick} 
+            onCardClick={handleCardClick} 
+            onCardLike={handleCardLike} 
+            onDeleteClick={handleCardDelete}  />
       <Footer />
       <EditProfilePopup isOpen={isEditProfilePopupOpen} onClose={closeAllPopups} onUpdateUser={handleUpdateUser} /> 
       <EditAvatarPopup isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups} onUpdateAvatar={handleUpdateAvatar} />
